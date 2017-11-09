@@ -59,6 +59,7 @@ public class ChatActivity extends Activity{
         chats=dataManager.getList(AccountManager.getInstance().getUserName(),friendName);
         adapter=new RVAdapter(this,chats);
         rv.setAdapter(adapter);
+        rv.scrollToPosition(adapter.getItemCount()-1);
     }
     public void onClick(View view){
         Chat chat=new Chat();

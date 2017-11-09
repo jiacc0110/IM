@@ -39,7 +39,7 @@ public class DataManager {
                 database.execSQL(sql,new Object[]{
                         chat.msgtype,chat.messageId,chat.msg,chat.frm,chat.sendto,chat.extra,chat.tim
                 });
-                database.beginTransaction();
+               // database.beginTransaction();
             }
         }.start();
 
