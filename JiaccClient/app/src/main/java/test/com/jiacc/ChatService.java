@@ -14,7 +14,7 @@ public class ChatService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
-        new ChatManager().initSocket();
+        ChatManager.getInstance().initSocket();
     }
 
     @Nullable

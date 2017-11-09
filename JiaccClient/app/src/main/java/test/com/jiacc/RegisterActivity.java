@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import netutils.Constant;
 import netutils.NetUtils;
 import netutils.StringUtils;
 
@@ -47,22 +48,25 @@ public class RegisterActivity extends AppCompatActivity {
                 if(StringUtils.isNullOrEmpty(et_password.getText().toString())){
                     return;
                 }
-               final String url="http://192.168.18.180:8080/JiaccServer/loginservlet?method=register" +
+               final String url= Constant.HTTP_URL+Constant.HOST_APP+"/loginservlet?method=register" +
                         "&username="+et_loginname.getText().toString()+
                         "&password="+et_password.getText().toString();
-                Log.i("jcc",url);
-                new Thread(){
-                    @Override
-                    public void run() {
-                        try {
-                            result=  NetUtils.requestUrl(url);
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        handler.sendEmptyMessage(0);
-                    }
-                }.start();
+                        Log.i("jcc",url);
+                        NetUtils.requestUrl(url, new NetUtils.NetCallback() {
+                            @Override
+                            public void onSuccess(final String data) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        tv.setText(data);
+                                    }
+                                });
+                            }
+                            @Override
+                            public void onFailure(String msg) {
 
+                            }
+                        });
                 break;
         }
     }

@@ -21,7 +21,7 @@ public class ChatWebsocket {
 
 	@OnOpen
 	public void onOpen(Session session,EndpointConfig config){
-		session.getAsyncRemote().sendText("open");
+		session.getAsyncRemote().sendText("{'msgtype':'open'}");
 	}
 
 	@OnClose
@@ -49,24 +49,28 @@ public class ChatWebsocket {
 				e.printStackTrace();
 			}
 		}else if("chat".equals(chat.msgtype)){
+			
 			Session sendtoSession=OnlineUserManager
 					.getOnlineUserManager()
 					.getOnlineSession(chat.sendto);
 			if(sendtoSession!=null){//判断是否在线
 				try {
+					System.out.println("before send to");
 					sendtoSession.getBasicRemote().sendText(chat.toJsonString());
+					System.out.println("after send to"+chat.toString());
 				} catch (IOException e) {
 					e.printStackTrace();
 				};
 			}else{
 				//将数据存储到数据库中，当接者用户上线后，同步消息并从数据库中删除。
-				
+				System.out.println("不在线！！");
 			}
 		}
 	}
 
 	public String parseMessage(String message,String key){
 		try {
+			System.out.println("message="+message+"key="+key);
 			JSONObject obj=new JSONObject(message);
 			return obj.get(key).toString();
 		} catch (JSONException e) {

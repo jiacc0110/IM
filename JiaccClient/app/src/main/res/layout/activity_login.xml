@@ -9,12 +9,14 @@
         android:id="@+id/et_loginname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="jiacc"
         android:hint="login name"/>
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_loginname"
+        android:text="hahahaha"
         android:hint="password"/>
     <Button
         android:id="@+id/bt_login"
@@ -39,6 +41,7 @@
         />
     <EditText
         android:id="@+id/et_sendto"
+        android:text="jiacc"
         android:hint="sendto"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

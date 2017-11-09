@@ -1,5 +1,7 @@
 package bean;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,6 +45,8 @@ public class Chat {
             obj.put("tim",tim);
             return obj.toString();
         }catch (Exception e){
+            e.printStackTrace();
+            Log.e("jcc","chat parse error");
         }
         return null;
     }

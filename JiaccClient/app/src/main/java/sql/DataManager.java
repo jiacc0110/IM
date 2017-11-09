@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Chat;
+import test.com.jiacc.App;
 
 /**
  * Created by jiacc on 2017/10/31.
@@ -21,14 +22,27 @@ public class DataManager {
             database = helper.getReadableDatabase();
         }
     }
+    public static DataManager instance;
+    public static DataManager getInstance(){
+        if(instance==null){
+            instance=new DataManager(App.app);
+        }
+        return instance;
+    }
 
 
-    public void insert(Chat chat){
-        String sql="insert into chat (msgtype,messageId,msg,frm,sendto,extra,tim) values(?,?,?,?,?,?,?)";
-        database.execSQL(sql,new Object[]{
-                chat.msgtype,chat.messageId,chat.msg,chat.frm,chat.sendto,chat.extra,chat.tim
-        });
-        database.beginTransaction();
+    public synchronized void insert(final Chat chat){
+        new Thread(){
+            @Override
+            public void run() {
+                String sql="insert into chat (msgtype,messageId,msg,frm,sendto,extra,tim) values(?,?,?,?,?,?,?)";
+                database.execSQL(sql,new Object[]{
+                        chat.msgtype,chat.messageId,chat.msg,chat.frm,chat.sendto,chat.extra,chat.tim
+                });
+                database.beginTransaction();
+            }
+        }.start();
+
     }
 
     public List<Chat> getList(String from,String sendto){

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -29,21 +30,28 @@ public class ChatActivity extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        dataManager=new DataManager(getApplication());
+        dataManager=DataManager.getInstance();
         friendName= getIntent().getStringExtra("friendname");
         initViews();
-        ChatManager.getInstance().addObserver(new ChatObserver());
+        ChatManager.getInstance().addObserver(chatObserver);
     }
-    class ChatObserver implements Observer{
+    private Observer chatObserver= new Observer(){
         @Override
-        public void update(Observable o, Object chat) {
-            if(chat instanceof Chat){
-                chats.add((Chat)chat);
-                adapter.notifyDataSetChanged();
-                rv.scrollToPosition(adapter.getItemCount()-1);
-            }
+        public void update(Observable o,final Object chat) {
+            Log.i("jcc","ChatActivity===Observer update");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(chat instanceof Chat){
+                        chats.add((Chat)chat);
+                        adapter.notifyDataSetChanged();
+                        rv.scrollToPosition(adapter.getItemCount()-1);
+                    }
+                }
+            });
+
         }
-    }
+    };
     private void initViews(){
         rv=(RecyclerView)findViewById(R.id.rv);
         et_msg=(EditText)findViewById(R.id.et_msg);
@@ -71,6 +79,8 @@ public class ChatActivity extends Activity{
     }
     @Override
     protected void onStop() {
+        ChatManager.getInstance().onClose();
+        ChatManager.getInstance().removeObserver(chatObserver);
         super.onStop();
     }
 }
