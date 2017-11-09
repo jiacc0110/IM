@@ -6,6 +6,6 @@
 2.客户端和服务端的登录逻辑；</br></br>
 3.客户端和服务端的私聊功能；</br></br>
 # 聊天页面如图：</br></br>
-![image]phone1.png </br>
-![iamge]phone2.png
+![image](phone1.png) </br>
+![iamge](phone2.png)
 
