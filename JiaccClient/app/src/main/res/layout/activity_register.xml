@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="test.com.jiacc.RegisterActivity">
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_loginname"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bt_checkName"
+            android:text="checkUserName"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll"/>
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_password"
+        android:text="register"
+        android:onClick="onClick"/>
+    <TextView
+        android:id="@+id/tv"
+        android:layout_below="@+id/bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
