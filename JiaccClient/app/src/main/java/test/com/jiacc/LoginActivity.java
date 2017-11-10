@@ -2,8 +2,6 @@ package test.com.jiacc;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -47,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                          runOnUiThread(new Runnable() {
                              @Override
                              public void run() {
+                                 tv.setText(data);
                                  String username=JsonUtils.getString(data,"msg");
                                  if(!StringUtils.isNullOrEmpty(username)){
                                      AccountManager.getInstance().setUserName(username);

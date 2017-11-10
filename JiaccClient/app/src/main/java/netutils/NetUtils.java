@@ -1,26 +1,29 @@
 package netutils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import java.io.IOException;
-import java.net.CookieManager;
-import java.util.Iterator;
-import java.util.Set;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.Cookie;
-import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import retrofit2.Retrofit;
+import test.com.jiacc.App;
 
 /**
  * Created by jiacc on 2017/10/25.
  */
 
 public class NetUtils {
+    //发起Http请求
     public static void requestUrl(String url,final NetCallback cb) {
-
+        if(!isConnected()) {
+            cb.onFailure("网络断开");
+            return;
+        }
         OkHttpClient client=new OkHttpClient.Builder().build();
         Request request=new Request.Builder().url(url).build();
         Call call=client.newCall(request);
@@ -38,5 +41,13 @@ public class NetUtils {
     public interface NetCallback{
         void onFailure(String msg);
         void onSuccess(String data);
+    }
+
+    //检查网络状态是否连接
+    public static boolean isConnected(){
+        ConnectivityManager cm=
+                (ConnectivityManager) App.app.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork=cm.getActiveNetworkInfo();
+        return activeNetwork!=null&&activeNetwork.isConnected();
     }
 }
