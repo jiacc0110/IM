@@ -8,13 +8,13 @@
     服务端使用Tomcat提供的WebSocket框架，客户端使用的Okhttp提供的WebSocket实现。使用成熟的框架，免去了部分底层维护系统健壮性的工作，尤其是服务端可以通过Tomcat强大的功能避免了一次错误请求到这服务崩溃的尴尬。这为我这个主做App开发的来说节省精力用在App的开发上。
 ## 2.架构设计
 </br>
-ClientSocket----------request---------------->ServerSocket</br>
-ClientSocket<-------onOpen ack_code-----------ServerSocket</br>
-ClientSocket-------onMessage connect--------->ServerSocket</br>
-ClientSocket<-----onMessage connect_ret-------ServerSocket</br>
-ClientSOcket-----onMessage msg_XXXXX msg_id-->ServerSocket</br>
-CLientSocket<---onMessage msg_ok_ret msg_id---ServerSocket</br>
- 
+ClientSocket----------request------------------>ServerSocket  客户端创建socket，并向服务端发起请求</br>
+ClientSocket<-------onOpen ack_code-------------ServerSocket  服务端返回成功码，在客户端onOpen中回调</br>
+ClientSocket-------onMessage connect user_id---->ServerSocket  客户端发起connect消息，传入用户userid，服务端将Session保存到列表中</br>
+ClientSocket<-----onMessage connect_ret usr_id--ServerSocket 服务端发送收到user_id回执</br>
+ClientSOcket-----onMessage msg_XXXXX msg_id----->ServerSocket  客户端发送消息到服务端</br>
+CLientSocket<---onMessage msg_ok_ret msg_id------ServerSocket   服务端发送收到消息回执</br>
+ClientSocket2<--------onMessage msg_XXXXX -------ServerSocket 服务端根据msg_XXX中接收对象，从Session列表接收者取出Session发送数据</br>
 ## 3.目前实现功能
 到2017年11月9日,目前完成功能有：</br></br>
 1.客户端和服务端的账号注册逻辑；</br></br>
