@@ -15,10 +15,11 @@ ClientSocket<-----onMessage connect_ret usr_id--ServerSocket 服务端发送收�
 ClientSOcket-----onMessage msg_XXXXX msg_id----->ServerSocket  客户端发送消息到服务端</br>
 CLientSocket<---onMessage msg_ok_ret msg_id------ServerSocket   服务端发送收到消息回执</br>
 ClientSocket2<--------onMessage msg_XXXXX -------ServerSocket 服务端根据msg_XXX中接收对象，从Session列表接收者取出Session发送数据</br>
+
 ## 3.目前实现功能
 到2017年11月9日,目前完成功能有：</br></br>
 1.客户端和服务端的账号注册逻辑；</br></br>
- 2.客户端和服务端的登录逻辑；</br></br>
+2.客户端和服务端的登录逻辑；</br></br>
 3.客户端和服务端的私聊功能；</br></br>
  聊天页面如图：</br></br>
 ![image](phone1.png) 
