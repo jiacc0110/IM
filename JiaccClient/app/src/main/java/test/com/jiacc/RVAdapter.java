@@ -54,9 +54,10 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             }catch (Exception e){
             }
             Long.valueOf(chats.get(position).messageId);
-            ((RightHolder) holder).tv.setText(chats.get(position).msg + " "
+            ((RightHolder) holder).tv.setText(chats.get(position).msg /*+ " "
                     + new SimpleDateFormat("hh:mm:ss").format(
-                    new Date(t)));
+                    new Date(t))*/
+            );
         }
         else if(holder instanceof LeftHolder)
             ((LeftHolder)holder).tv.setText(chats.get(position).msg);

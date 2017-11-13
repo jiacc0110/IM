@@ -18,6 +18,7 @@ import sql.DataManager;
 
 /**
  * Created by jiacc on 2017/10/27.
+ * 聊天对话页面
  */
 public class ChatActivity extends Activity{
     RecyclerView rv;

@@ -21,6 +21,7 @@ import sql.DataManager;
 
 /**
  * Created by jiacc on 2017/11/6.
+ * 聊天管理类，管理WebSocket的连接以及数据的发送和回执
  */
 
 public class ChatManager {

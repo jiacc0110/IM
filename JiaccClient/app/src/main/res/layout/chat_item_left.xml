@@ -2,12 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/icon_left"
+        android:padding="@dimen/icon_padding"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/chat_margin"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/headimg"/>
     <TextView
         android:id="@+id/tv_chatcontent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginLeft="@dimen/chat_margin"
+        android:layout_marginTop="@dimen/chat_margin"
         android:textColor="#555555"
-        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/icon_left"
+        android:layout_toRightOf="@+id/icon_left"
         android:layout_width="wrap_content"
         android:background="@drawable/chat_qipao_l"
         android:layout_height="wrap_content" />

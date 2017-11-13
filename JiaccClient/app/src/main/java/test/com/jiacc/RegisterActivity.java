@@ -16,6 +16,9 @@ import netutils.Constant;
 import netutils.NetUtils;
 import netutils.StringUtils;
 
+/**
+ * 注册页面
+ */
 public class RegisterActivity extends AppCompatActivity {
     private EditText et_loginname,et_password;
     String result;

@@ -12,6 +12,7 @@ import test.com.jiacc.App;
 
 /**
  * Created by jiacc on 2017/10/31.
+ * 数据库工具类
  */
 
 public class DataManager {
@@ -30,7 +31,10 @@ public class DataManager {
         return instance;
     }
 
-
+    /**
+     *
+     * @param chat 将Chat实体插入到本地数据库
+     */
     public synchronized void insert(final Chat chat){
         new Thread(){
             @Override
@@ -39,12 +43,17 @@ public class DataManager {
                 database.execSQL(sql,new Object[]{
                         chat.msgtype,chat.messageId,chat.msg,chat.frm,chat.sendto,chat.extra,chat.tim
                 });
-               // database.beginTransaction();
             }
         }.start();
 
     }
 
+    /**
+     * 读取对话双方的消息
+     * @param from
+     * @param sendto
+     * @return
+     */
     public List<Chat> getList(String from,String sendto){
         String sql="select msgtype,messageId,msg,frm,sendto,extra,tim from chat where frm=? and sendto=? or frm=? and sendto=?";
         Cursor cursor = database.rawQuery(sql, new String[]{

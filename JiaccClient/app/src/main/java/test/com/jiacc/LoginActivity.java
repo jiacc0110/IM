@@ -14,6 +14,10 @@ import netutils.JsonUtils;
 import netutils.NetUtils;
 import netutils.StringUtils;
 
+/**
+ * 登录页面
+ */
+
 public class LoginActivity extends AppCompatActivity {
     private Button bt;
     private TextView tv;

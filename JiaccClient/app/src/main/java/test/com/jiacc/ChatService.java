@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 /**
  * Created by jiacc on 2017/11/6.
+ * 聊天服务，所有的聊天内容在Service中处理，并提供发布者供需要的页面进行订阅
  */
 
 public class ChatService extends Service{

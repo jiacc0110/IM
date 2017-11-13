@@ -2,6 +2,7 @@ package test.com.jiacc;
 
 /**
  * Created by jiacc on 2017/11/2.
+ * 登录账号管理类，用于将当前登录账号储存到内存中
  */
 
 public class AccountManager {

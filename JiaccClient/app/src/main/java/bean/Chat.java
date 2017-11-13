@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 /**
  * Created by jiacc on 2017/10/27.
+ * 聊天实体类，作为客户端、服务端、以及客户端服务端数据库流通消息的封装类
  */
 public class Chat {
     public Chat(){

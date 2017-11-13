@@ -15,6 +15,7 @@ import test.com.jiacc.App;
 
 /**
  * Created by jiacc on 2017/10/25.
+ * 网络请求工具类
  */
 
 public class NetUtils {

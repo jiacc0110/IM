@@ -2,6 +2,7 @@ package netutils;
 
 /**
  * Created by jiacc on 2017/10/27.
+ * 服务器常量
  */
 
 public class Constant {
