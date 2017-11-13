@@ -22,6 +22,6 @@ ClientSocket2<--------onMessage msg_XXXXX -------ServerSocket 服务端根据msg
 2.客户端和服务端的登录逻辑；</br></br>
 3.客户端和服务端的私聊功能；</br></br>
  聊天页面如图：</br></br>
-![image](phone1.png) 
-![iamge](phone2.png)
+![image](gif1.gif) 
+![iamge](gif2.gif)
 
